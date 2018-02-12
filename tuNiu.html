@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>途牛网首页轮播效果</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="描述">
+    <meta name="author" content="作者">
+    <meta http-equiv="content-type" content="text/html" charset="utf-8">
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background: url("images/tuNiu/bg.jpg");
+        }
+
+        .box {
+            width: 735px;
+            height: 350px;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .con {
+            width: 735px;
+            height: 350px;
+            background: #06f;
+            overflow: hidden;
+        }
+
+        .box .con ul li {
+            list-style: none;
+            width: 735px;
+            height: 350px;
+        }
+
+        .prev {
+            width: 45px;
+            height: 100px;
+            position: absolute;
+            top: 50%;
+            left: 0px;
+            margin-top: -50px;
+            background: url("images/tuNiu/button.png");
+            opacity: 0.5;
+            cursor: pointer;
+            display: none;
+        }
+
+        .next {
+            width: 45px;
+            height: 100px;
+            position: absolute;
+            top: 50%;
+            right: 0px;
+            margin-top: -50px;
+            background: url("images/tuNiu/button.png");
+            opacity: 0.5;
+            background-position: -55px 0px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .nav {
+            width: 720px;
+            height: 30px;
+            border: 1px solid #3f0;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            margin-left: -360px;
+
+        }
+
+        .nav ul li {
+            list-style: none;
+            width: 119px;
+            height: 30px;
+            float: left;
+            background: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+            font-family: "微软雅黑";
+            text-align: center;
+            line-height: 30px;
+            margin-right: 1px;
+            cursor: pointer;
+        }
+
+        .nav ul .bg {
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="con">
+        <ul>
+            <li><img src="images/tuNiu/1.jpg"/></li>
+            <li><img src="images/tuNiu/2.jpg"/></li>
+            <li><img src="images/tuNiu/3.jpg"/></li>
+            <li><img src="images/tuNiu/4.jpg"/></li>
+            <li><img src="images/tuNiu/5.jpg"/></li>
+            <li><img src="images/tuNiu/6.jpg"/></li>
+        </ul>
+    </div>
+    <div class="prev"></div>
+    <div class="next"></div>
+    <div class="nav">
+        <ul>
+            <li class="bg">旅游节超低价</li>
+            <li>最牛新品</li>
+            <li>慢品丽江</li>
+            <li>六星自驾西游记</li>
+            <li>订就送五星卷</li>
+            <li>探寻秘境寻优惠</li>
+
+        </ul>
+    </div>
+</div>
+<script type="text/javascript" src="libs/jquery-1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+    var i = 0; //存放的是li的下标
+    $(".box").hover(function () {
+                $(".prev").css("display", "block");
+                $(".next").css("display", "block");
+            },
+            function () {
+                $(".prev").css("display", "none");
+                $(".next").css("display", "none");
+            })
+    $(".nav ul li").hover(function () {
+        $(this).addClass("bg").siblings().removeClass("bg");
+        i = $(this).index();
+        $(".box .con ul li").eq(i).fadeIn(100).siblings().fadeOut(100);
+    })
+    $(".prev").click(function () {
+        i--;
+        if (i < 0)
+            i = 5;
+        $(".box .con ul li").eq(i).fadeIn(100).siblings().fadeOut(100);
+        $(".nav ul li").eq(i).addClass("bg").siblings().removeClass("bg");
+
+    })
+    $(".next").click(function () {
+        i++;
+        if (i > 5)
+            i = 0;
+        $(".box .con ul li").eq(i).fadeIn(100).siblings().fadeOut(100);
+        $(".nav ul li").eq(i).addClass("bg").siblings().removeClass("bg");
+
+    })
+
+    setInterval(function(){
+        i++;
+        if (i > 5)
+            i = 0;
+        $(".box .con ul li").eq(i).fadeIn(100).siblings().fadeOut(100);
+        $(".nav ul li").eq(i).addClass("bg").siblings().removeClass("bg");
+    },2000);
+
+</script>
+</body>
+</html>
