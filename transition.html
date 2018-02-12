@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>过渡</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .warp {
+            width: 700px;
+            height: 520px;
+            margin: 0 auto;
+        }
+
+        .warp .row .col {
+            width: 220px;
+            height: 220px;
+            float: left;
+            margin: 20px 50px;
+        }
+
+        .warp .row .col .circle {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .circle .img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .circle .img img {
+
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+
+        }
+
+        .circle .img:before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            display: block;
+            box-shadow: inset 0 0 0 16px rgba(255, 255, 255, 0.6),
+            0 1px 2px rgba(0, 0, 0, 0.3);
+            position: absolute;
+        }
+
+        .circle .info {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            border-radius: 50%;
+        }
+
+        .effect .img {
+            z-index: 999;
+            transition: all 0.3s linear;
+        }
+
+        .effect .info {
+            background: #333;
+            text-align: center;
+            transition: all 0.3s linear;
+            opacity: 0;
+        }
+
+        .effect .info h3 {
+            color: #fff;
+            margin: 0 30px;
+            padding: 50px 0 0 0;
+            font-size: 22px;
+            height: 70px;
+            letter-spacing: 2px;
+        }
+
+        .effect .info p {
+            border-top: 1px solid #fff;
+            color: #bbb;
+            font-size: 12px;
+            margin: 0 30px;
+            padding: 10px 5px;
+            font-style: italic;
+        }
+
+        .left-to-right .info {
+            transform: translateX(-100%);
+        }
+
+        .right-to-left .info {
+            transform: translateX(100%);
+        }
+
+        .left-to-right .img {
+            transform: scale(1) translateX(0);
+        }
+
+        .right-to-left .img {
+            transform: scale(1) translateX(0);
+        }
+
+        .left-to-right a:hover .info {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .right-to-left a:hover .info {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .left-to-right a:hover .img {
+            transform: scale(0.5) translateX(100%);
+        }
+
+        .right-to-left a:hover .img {
+            transform: scale(0.5) translateX(-100%);
+        }
+
+        .colore .info {
+            background: #1a4a72;
+        }
+
+    </style>
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body>
+<div class="warp">
+    <div class="row">
+        <div class="col">
+            <div class="circle effect left-to-right">
+                <a href="#">
+                    <div class="img">
+                        <img src="images/transition/1.jpg"/>
+                    </div>
+                    <div class="info">
+                        <h3>WEB前端学院</h3>
+                        <p>nahdbjnahdbjnahdb</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col">
+            <div class="circle effect colore left-to-right">
+                <a href="#">
+                    <div class="img">
+                        <img src="images/transition/2.jpg"/>
+                    </div>
+                    <div class="info">
+                        <h3>WEB前端学院</h3>
+                        <p>nahdbjnahdbjnahdb</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col">
+            <div class="circle effect right-to-left">
+                <a href="#">
+                    <div class="img">
+                        <img src="images/transition/3.jpg"/>
+                    </div>
+                    <div class="info">
+                        <h3>WEB前端学院</h3>
+                        <p>nahdbjnahdbjnahdb</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col">
+            <div class="circle effect colore right-to-left">
+                <a href="#">
+                    <div class="img">
+                        <img src="images/transition/4.jpg"/>
+                    </div>
+                    <div class="info">
+                        <h3>WEB前端学院</h3>
+                        <p>nahdbjnahdbjnahdb</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

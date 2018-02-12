@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>百叶窗</title>
+    <link rel="stylesheet" href="">
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .banner {
+            width: 800px;
+            height: 500px;
+            border: 3px solid #3838EF;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .banner .pic {
+            width: 800px;
+            height: 500px;
+        }
+
+        .banner .pic ul li {
+            width: 200px;
+            height: 500px;
+            float: left;
+            position: relative;
+            overflow: hidden;
+            list-style: none;
+            /*border: 1px solid #E83F3F;*/
+
+        }
+
+        .banner .pic ul li div {
+            width: 200px;
+            height: 500px;
+            position: absolute;
+            top: 0;
+            left: -200px;
+            /*border: 1px solid green;*/
+        }
+
+        .banner .pic ul li div:nth-child(1) {
+
+            background-image: url(images/windowShades/windowShades1.jpg);
+        }
+
+        .banner .pic ul li div:nth-child(2) {
+
+            background-image: url(images/windowShades/windowShades2.jpg);
+        }
+
+        .banner .pic ul li div:nth-child(3) {
+
+            background-image: url(images/windowShades/windowShades3.jpg);
+        }
+
+        .banner .pic ul li div:nth-child(4) {
+
+            background-image: url(images/windowShades/windowShades4.jpg);
+        }
+
+        .pic ul li:nth-child(1) div {
+            background-position: 0px;
+        }
+
+        .pic ul li:nth-child(2) div {
+            background-position: -200px;
+        }
+
+        .pic ul li:nth-child(3) div {
+            background-position: -400px;
+        }
+
+        .pic ul li:nth-child(4) div {
+            background-position: -600px;
+        }
+
+        label {
+            width: 20px;
+            height: 20px;
+            display: block;
+            border-radius: 10px;
+            text-align: center;
+            line-height: 20px;
+            background: #999;
+            float: left;
+            color: #fff;
+            cursor: pointer;
+            position: absolute;
+            bottom: 10px;
+            z-index: 2;
+        }
+
+        label:nth-child(2) {
+
+            right: 100px;
+        }
+
+        label:nth-child(4) {
+            right: 70px;
+        }
+
+        label:nth-child(6) {
+            right: 40px;
+        }
+
+        label:nth-child(8) {
+            right: 10px;
+        }
+
+        input {
+            display: none;
+        }
+
+        input:checked + label {
+            background: #0ff;
+        }
+
+        input#yi:checked ~ .pic ul li div:nth-child(1) {
+            left: 0;
+            transition: 0.8s;
+        }
+
+        input#er:checked ~ .pic ul li div:nth-child(2) {
+            left: 0;
+            transition: 0.8s;
+        }
+
+        input#san:checked ~ .pic ul li div:nth-child(3) {
+            left: 0;
+            transition: 0.8s;
+        }
+
+        input#si:checked ~ .pic ul li div:nth-child(4) {
+            left: 0;
+            transition: 0.8s;
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div class="banner">
+
+    <input type="radio" name="choose" id="yi" checked="checked">
+    <label for="yi">1</label>
+
+    <input type="radio" name="choose" id="er">
+    <label for="er">2</label>
+
+    <input type="radio" name="choose" id="san">
+    <label for="san">3</label>
+
+    <input type="radio" name="choose" id="si">
+    <label for="si">4</label>
+
+    <div class="pic">
+        <ul>
+            <li>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </li>
+            <li>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </li>
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>原生js实现全能轮播图</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 500px;
+            height: 200px;
+            background: red;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .scroll {
+            height: 200px;
+            background: blue;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scroll > ul {
+            width: 3000px;
+            height: 200px;
+            border: 1px solid green;
+            list-style: none;
+            position: absolute;
+        }
+
+        .scroll > ul > li {
+            width: 500px;
+            height: 200px;
+            float: left;
+        }
+
+        .scroll > ul > li > a {
+            text-decoration: none;
+            display: block;
+            width: 500px;
+            height: 200px;
+        }
+
+        .scroll > ul > li > a > img {
+            display: block;
+        }
+
+        .scroll > ol {
+            width: 105px;
+            height: 20px;
+            background: yellow;
+            position: absolute;
+            right: 20px;
+            bottom: 10px;
+            list-style: none;
+        }
+
+        .scroll > ol > li {
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            color: #000;
+            text-align: center;
+            line-height: 20px;
+            float: left;
+            border-right: 1px solid #000;
+            cursor: pointer;
+        }
+
+        .btn {
+            width: 500px;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            margin-top: -15px;
+            display: none;
+        }
+
+        .btn > a {
+            display: block;
+            width: 20px;
+            height: 30px;
+            background: #000;
+            opacity: 0.4;
+            color: #fff;
+            font-size: 20px;
+            position: absolute;
+            top: 0;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        .btn > .btnLeft {
+            left: 20px;
+        }
+
+        .btn > .btnRight {
+            right: 20px;
+        }
+    </style>
+
+</head>
+<body>
+<div id="banner" class="box">
+    <div class="scroll">
+        <ul>
+            <li><a href="#"><img src="images/carouselFigure/1.jpg"></a></li>
+            <li><a href="#"><img src="images/carouselFigure/2.jpg"></a></li>
+            <li><a href="#"><img src="images/carouselFigure/3.jpg"></a></li>
+            <li><a href="#"><img src="images/carouselFigure/4.jpg"></a></li>
+            <li><a href="#"><img src="images/carouselFigure/5.jpg"></a></li>
+        </ul>
+        <ol></ol>
+    </div>
+    <div class="btn">
+        <a href="javascript:void(0);" class="btnLeft">&lt;</a>
+        <a href="javascript:void(0);" class="btnRight">&gt;</a>
+    </div>
+</div>
+
+<script src="./js/carouselFigure/tools.js"></script>
+<script src="./js/carouselFigure/carouselFigure.js"></script>
+</body>
+</html>
