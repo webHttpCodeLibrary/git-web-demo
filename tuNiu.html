@@ -122,45 +122,46 @@
 </div>
 <script type="text/javascript" src="libs/jquery-1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
-    var i = 0; //存放的是li的下标
-    $(".box").hover(function () {
-                $(".prev").css("display", "block");
-                $(".next").css("display", "block");
-            },
-            function () {
-                $(".prev").css("display", "none");
-                $(".next").css("display", "none");
-            })
-    $(".nav ul li").hover(function () {
-        $(this).addClass("bg").siblings().removeClass("bg");
-        i = $(this).index();
-        $(".box .con ul li").eq(i).fadeIn(100).siblings().fadeOut(100);
+    $(function(){
+        var i = 0; //存放的是li的下标
+        $(".box").hover(function () {
+                    $(".prev").css("display", "block");
+                    $(".next").css("display", "block");
+                },
+                function () {
+                    $(".prev").css("display", "none");
+                    $(".next").css("display", "none");
+                })
+        $(".nav ul li").hover(function () {
+            $(this).addClass("bg").siblings().removeClass("bg");
+            i = $(this).index();
+            $(".box .con ul li").eq(i).fadeIn(100).siblings().fadeOut(100);
+        })
+        $(".prev").click(function () {
+            i--;
+            if (i < 0)
+                i = 5;
+            $(".box .con ul li").eq(i).fadeIn(100).siblings().fadeOut(100);
+            $(".nav ul li").eq(i).addClass("bg").siblings().removeClass("bg");
+
+        })
+        $(".next").click(function () {
+            i++;
+            if (i > 5)
+                i = 0;
+            $(".box .con ul li").eq(i).fadeIn(100).siblings().fadeOut(100);
+            $(".nav ul li").eq(i).addClass("bg").siblings().removeClass("bg");
+
+        })
+
+        setInterval(function(){
+            i++;
+            if (i > 5)
+                i = 0;
+            $(".box .con ul li").eq(i).fadeIn(100).siblings().fadeOut(100);
+            $(".nav ul li").eq(i).addClass("bg").siblings().removeClass("bg");
+        },2000);
     })
-    $(".prev").click(function () {
-        i--;
-        if (i < 0)
-            i = 5;
-        $(".box .con ul li").eq(i).fadeIn(100).siblings().fadeOut(100);
-        $(".nav ul li").eq(i).addClass("bg").siblings().removeClass("bg");
-
-    })
-    $(".next").click(function () {
-        i++;
-        if (i > 5)
-            i = 0;
-        $(".box .con ul li").eq(i).fadeIn(100).siblings().fadeOut(100);
-        $(".nav ul li").eq(i).addClass("bg").siblings().removeClass("bg");
-
-    })
-
-    setInterval(function(){
-        i++;
-        if (i > 5)
-            i = 0;
-        $(".box .con ul li").eq(i).fadeIn(100).siblings().fadeOut(100);
-        $(".nav ul li").eq(i).addClass("bg").siblings().removeClass("bg");
-    },2000);
-
 </script>
 </body>
 </html>
