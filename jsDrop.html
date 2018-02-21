@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原生js实现拖拽效果</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            background: #33ff00;
+            position: absolute;
+            left: 40%;
+            top: 40%;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+<script>
+    //pageX兼容方法
+    function getPageX(e) {
+        var e = e || window.event;
+        if (e.pageX) {
+            return e.pageX;
+        } else {
+            var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+            return e.clientX + scrollLeft;
+        }
+    }
+
+    //pageY兼容方法
+    function getPageY(e) {
+        var e = e || window.event;
+        if (e.pageY) {
+            return e.pageY;
+        } else {
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            return e.clientY + scrollTop;
+        }
+    }
+
+    //获取元素css中样式的方法，兼容方式
+    function getStyle(node, property) {
+        if (node.style[property]) {
+            return node.style[property];
+        } else if (node.currentStyle) {
+            return node.currentStyle[property];
+        } else if (document.defaultView && document.defaultView.getComputedStyle) {
+            var style = document.defaultView.getComputedStyle(node, null);
+            return style.getPropertyValue(property);
+        }
+        return null;
+    }
+
+    var box = document.getElementById("box");
+    box.onmousedown = function (e) {
+        //获取鼠标在box中的位置
+        var spaceX = getPageX(e) - box.offsetLeft;
+        var spaceY = getPageY(e) - box.offsetTop;
+
+        //注册鼠标移动事件
+        document.onmousemove = function (e) {
+
+            var x = getPageX(e) - spaceX;
+            var y = getPageY(e) - spaceY;
+
+            box.style.left = x + "px";
+            box.style.top = y + "px";
+        }
+    }
+
+    document.onmouseup = function (e) {
+        document.onmousemove = null;
+    }
+
+</script>
+</html>
