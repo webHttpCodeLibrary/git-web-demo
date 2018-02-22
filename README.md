@@ -6,4 +6,5 @@
 ### Html5+Css3实现无缝滚动：[preview](https://webhttpcodelibrary.github.io/git-web-demo/seamlessRolling.html)
 ### Javascript实现全能轮播图：[preview](https://webhttpcodelibrary.github.io/git-web-demo/carouselFigure.html)
 ### Javascript实现拖拽效果：[preview](https://webhttpcodelibrary.github.io/git-web-demo/jsDrop.html)
+### Javascript实现放大镜效果：[preview](https://webhttpcodelibrary.github.io/git-web-demo/jsMagnifier.html)
 ### JQuery实现途牛轮播图：[preview](https://webhttpcodelibrary.github.io/git-web-demo/tuNiu.html)

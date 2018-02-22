@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>js放大镜效果Magnifier</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            .box {
+                width: 350px;
+                height: 350px;
+                margin: 100px;
+                border: 1px solid #ccc;
+                position: relative;
+            }
+
+            .big {
+                width: 400px;
+                height: 400px;
+                position: absolute;
+                top: 0;
+                left: 360px;
+                border: 1px solid #ccc;
+                overflow: hidden;
+                display: none;
+            }
+            .mask {
+                width: 175px;
+                height: 175px;
+                background: rgba(255, 255, 0, 0.4);
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                cursor: move;
+                display: none;
+            }
+            .small {
+                position: relative;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box" id="box">
+            <div class="small">
+                <img src="images/jsMagnifier/small.webp"  width="350">
+                <div class="mask"></div>
+            </div>
+            <div class="big">
+                <img src="images/jsMagnifier/big.jpg" width="800">
+            </div>
+        </div>
+
+        <script>
+            window.onload=function(){
+                var box = document.getElementById("box");
+                var smallBox = box.children[0];
+                var bigBox = box.children[1];
+                var mask = smallBox.children[1];
+                var bigImg = bigBox.children[0];
+
+                smallBox.onmouseover = function(e){
+                    bigBox.style.display = "block";
+                    mask.style.display = "block";
+                }
+
+                smallBox.onmouseout = function(){
+                    bigBox.style.display = "none";
+                    mask.style.display = "none";
+                }
+
+                smallBox.onmousemove = function(e){
+                    //获取mask中心点
+                    var w = mask.offsetWidth/2;
+                    var h = mask.offsetHeight/2;
+
+                    //设置mask的坐标
+                    var x = e.clientX - 100 - w;//100是mask的margin-left，w是水平中心点。
+                    var y = e.clientY - 100 - h;//100是mask的margin-top，h是垂直中心点。
+
+                    //控制坐标的范围
+                    x = x < 0 ? 0 : x;
+                    y = y < 0 ? 0 : y;
+
+                    x = x > smallBox.offsetWidth - mask.offsetWidth ? smallBox.offsetWidth - mask.offsetWidth : x;
+                    y = y > smallBox.offsetHeight - mask.offsetHeight ? smallBox.offsetHeight - mask.offsetHeight : y;
+
+                    //坐标赋值
+                    mask.style.left = x + "px";
+                    mask.style.top = y + "px";
+
+                    //改变大图片的位置
+                    // mask最大的移动距离/图片的最大移动距离  =  mask的移动距离/bigImg的移动距离
+                    //bigImg的移动距离= mask的移动距离  *  图片的最大移动距离 / mask最大的移动距离;
+
+                    var smallToMove = smallBox.offsetWidth - mask.offsetWidth;
+                    var bigToMove = bigImg.offsetWidth - bigBox.offsetWidth;
+
+                    var marginLeft = x * bigToMove / smallToMove;
+                    var marginTop = y * bigToMove / smallToMove;
+
+                    //进行赋值操作，需要设置为负数
+                    bigImg.style.marginLeft = - marginLeft + "px";
+                    bigImg.style.marginTop = - marginTop + "px";
+
+                }
+            }
+        </script>
+    </body>
+</html>
