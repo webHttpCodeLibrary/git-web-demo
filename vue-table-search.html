@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue渲染表格并实现搜索</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        #box {
+            width: 800px;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">搜索</label>
+            <div class="col-sm-10">
+                <input v-model="searchText" type="search" class="form-control" id="inputEmail3"
+                       placeholder="请输入要查询的信息，如：序号、姓名、年龄、性别">
+            </div>
+        </div>
+    </form>
+    <table class="table table-hover table-bordered">
+        <thead>
+        <tr>
+            <th v-for="tit in title">{{tit}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="success" v-for="item in cpl">
+            <th scope="row">{{item.number}}</th>
+            <td>{{item.name}}</td>
+            <td>{{item.age}}</td>
+            <td>{{item.sex}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    //模拟数据
+    var dataSource = {
+        searchText: "",
+        title: ["序号", "姓名", "年龄", "性别"],
+        info: [
+            {
+                number: 1,
+                name: "赵一",
+                age: 20,
+                sex: "男"
+            },
+            {
+                number: 2,
+                name: "钱二",
+                age: 31,
+                sex: "男"
+            },
+            {
+                number: 3,
+                name: "孙三",
+                age: 45,
+                sex: "女"
+            },
+            {
+                number: 4,
+                name: "李四",
+                age: 67,
+                sex: "男"
+            },
+            {
+                number: 5,
+                name: "王五",
+                age: 89,
+                sex: "男"
+            }
+
+        ]
+    }
+
+    //创建控制器
+    var app = new Vue({
+        el: "#box",
+        data: dataSource,
+        computed: {
+            cpl: function () {
+                var _this = this;
+                return this.info.filter(function (dataText) {
+                    return dataText.number.toString().indexOf(_this.searchText) != -1 ||
+                            dataText.name.indexOf(_this.searchText) != -1 ||
+                            dataText.age.toString().indexOf(_this.searchText) != -1 ||
+                            dataText.sex.indexOf(_this.searchText) != -1;
+                })
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

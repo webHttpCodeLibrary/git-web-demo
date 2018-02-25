@@ -8,3 +8,4 @@
 ### Javascript实现拖拽效果：[preview](https://webhttpcodelibrary.github.io/git-web-demo/jsDrop.html)
 ### Javascript实现放大镜效果：[preview](https://webhttpcodelibrary.github.io/git-web-demo/jsMagnifier.html)
 ### JQuery实现途牛轮播图：[preview](https://webhttpcodelibrary.github.io/git-web-demo/tuNiu.html)
+### vue实现表格渲染与查询：[preview](https://webhttpcodelibrary.github.io/git-web-demo/vue-table-search.html)
