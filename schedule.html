@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue实现任务计划表</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        .top, .top-content {
+            background-color: #0066ff;
+            color: #fff;
+        }
+
+        .editValue {
+            display: none;
+        }
+
+        .item-content {
+            padding: 0 10px 0 10px;
+        }
+
+        div.item-content input:nth-child(1) {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        div.item-content span:nth-child(2) {
+            vertical-align: super;
+        }
+
+        div.item-content span:nth-child(3) {
+            float: right;
+            cursor: pointer;
+            line-height: 29px;
+        }
+
+        li.info {
+            background-color: #bbb;
+        }
+
+        li.info div.item-content span:nth-child(2) {
+            text-decoration: line-through;
+        }
+
+        li.edit .item-content {
+            display: none;
+        }
+
+        li.edit .editValue {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container-fluid top">
+    <div class="container top-content">
+        <h2>任务计划管理表</h2>
+    </div>
+</div>
+<div class="container" id="main">
+    <h3>添加任务：</h3>
+    <input type="text" placeholder="请输入需要添加的任务，按回车键即可" class="form-control" v-model="addData"
+           v-on:keyup.enter="addListData"/>
+    <ul class="list-group" v-show="listData.length">
+        <li class="list-group-item" style="color: red">{{onChecked}}个任务未完成</li>
+        <li class="list-group-item">
+            <div class="btn-group" role="group" aria-label="...">
+                <a href="#all" class="btn btn-default">所有任务</a>
+                <a href="#unfinish" class="btn btn-default">未完成的任务</a>
+                <a href="#finish" class="btn btn-default">已完成的任务</a>
+            </div>
+        </li>
+    </ul>
+    <div class="panel panel-info">
+        <div class="panel-heading">任务列表</div>
+        <div class="panel-body">
+            <p style="color: red" v-show="!listData.length">还没有添加任务</p>
+            <ul class="list-group">
+                <li class="list-group-item"
+                    :class="{info:item.isChecked,edit:item === editData }"
+                    v-for="item in filterList"
+                >
+                    <div class="item-content">
+                        <input type="checkbox" v-model="item.isChecked"/>
+                        <span @dblclick="editListData(item)">{{ item.text }}</span>
+                        <span class="glyphicon glyphicon-remove" style="color: brown" aria-hidden="true"
+                              @click="deleteListData(item)"></span>
+                    </div>
+                    <input type="text" class="editValue form-control"
+                           v-focus="item === editData"
+                           v-model="item.text"
+                           @blur="updateListData(item)"
+                           @keyup.13="updateListData(item)"
+                           @keyup.esc="cancelEditing(item)"
+                    />
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="./js/schedule/schedule.js"></script>
+</body>
+</html>

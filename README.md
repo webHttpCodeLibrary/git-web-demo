@@ -9,3 +9,4 @@
 ### Javascript实现放大镜效果：[preview](https://webhttpcodelibrary.github.io/git-web-demo/jsMagnifier.html)
 ### JQuery实现途牛轮播图：[preview](https://webhttpcodelibrary.github.io/git-web-demo/tuNiu.html)
 ### vue实现表格渲染与查询：[preview](https://webhttpcodelibrary.github.io/git-web-demo/vue-table-search.html)
+### vue实现任务计划管理系统SPA：[preview](https://webhttpcodelibrary.github.io/git-web-demo/schedule.html)
