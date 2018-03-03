@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>H5C3实现图片扫光效果</title>
+</head>
+<style>
+    * {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    body {
+        background-color: #000;
+    }
+
+    .box {
+        width: 422px;
+        height: 300px;
+        margin: 100px auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .box:before, .box:after {
+        content: '';
+        position: absolute;
+        left: -200px;
+        top: 0px;
+        width: 30px;
+        height: 300px;
+        background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+        transform: skew(-45deg);
+    }
+
+    .box:hover:before {
+        left: 600px;
+        transition: all 1.5s;
+    }
+
+    .box:hover:after {
+        left: 600px;
+        transition: all 2s;
+        transition-delay: 0.2s;
+    }
+</style>
+<body>
+<div class="box">
+    <img src="images/sweepLight/sweepLight.jpg" width="422" height="300">
+</div>
+</body>
+</html>

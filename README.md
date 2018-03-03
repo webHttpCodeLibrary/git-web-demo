@@ -4,6 +4,7 @@
 ### Html5+Css3实现百叶窗：[preview](https://webhttpcodelibrary.github.io/git-web-demo/windowShades.html)
 ### Html5+Css3过渡：[preview](https://webhttpcodelibrary.github.io/git-web-demo/transition.html)
 ### Html5+Css3实现无缝滚动：[preview](https://webhttpcodelibrary.github.io/git-web-demo/seamlessRolling.html)
+### Html5+Css3实现图片扫光：[preview](https://webhttpcodelibrary.github.io/git-web-demo/sweepLight.html)
 ### Javascript实现全能轮播图：[preview](https://webhttpcodelibrary.github.io/git-web-demo/carouselFigure.html)
 ### Javascript实现拖拽效果：[preview](https://webhttpcodelibrary.github.io/git-web-demo/jsDrop.html)
 ### Javascript实现放大镜效果：[preview](https://webhttpcodelibrary.github.io/git-web-demo/jsMagnifier.html)
